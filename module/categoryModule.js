@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const asyncHandler = require("express-async-handler");
 const categoryModel = require("./../model/categoryModule");
 const config = require("./../config");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const createCategory = asyncHandler(async (req, res) => {
   //   console.log(req);

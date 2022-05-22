@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const asyncHandler = require("express-async-handler");
 const userModel = require("./../model/userModel");
 const config = require("./../config");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const signUpUser = asyncHandler(async (req, res, next) => {
   const { email, password, username } = req.body;
