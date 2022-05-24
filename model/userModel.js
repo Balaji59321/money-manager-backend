@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const brcypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema(
   {
@@ -24,8 +24,8 @@ const userSchema = mongoose.Schema(
 );
 
 userSchema.pre("save", async function () {
-  const salt = await brcypt.genSalt(10);
-  this.password = await brcypt.hash(this.password, salt);
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 const userModel = mongoose.model("User", userSchema);
