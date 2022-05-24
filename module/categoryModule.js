@@ -13,9 +13,11 @@ const createCategory = asyncHandler(async (req, res) => {
   res.status(201).send(resp);
 });
 
-const listCategory = asyncHandler(async (req, res) => {
+const listCategory = asyncHandler(async (req, res, next) => {
   const id = req.userId;
-  const resp = await categoryModel.find({ id });
+  console.log(id);
+  const resp = await categoryModel.find({ userId: id }).populate();
+  console.log(resp);
 
   res
     .status(200)

@@ -22,15 +22,15 @@ const expenseSchema = mongoose.Schema({
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "category",
+    ref: "Category",
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
 });
 expenseSchema.set("timestamps", true);
 
-const expenseModel = mongoose.model("expense", expenseSchema);
+const expenseModel = mongoose.model("Expense", expenseSchema);
 
 module.exports = expenseModel;

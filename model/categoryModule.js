@@ -7,10 +7,10 @@ const categorySchema = mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
 });
 
-const categoryModel = mongoose.model("category", categorySchema);
+const categoryModel = mongoose.model("Category", categorySchema);
 
 module.exports = categoryModel;

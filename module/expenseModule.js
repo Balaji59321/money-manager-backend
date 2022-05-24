@@ -42,32 +42,14 @@ const getAllExpense = asyncHandler(async (req, res) => {
   const { userId } = req;
   if (!userId) res.status(404).send({ message: "No user found" });
 
-  const resp = await expenseModel.find({ userId });
-  const temp = [...resp];
-
-  let func1 = async () => {
-    return await categoryModel.findById(temp[i]["categoryId"])["name"];
-  };
-
-  for (i in resp) {
-    const test = async () => {
-      if (temp[i]["categoryId"]) {
-        let out = await func1();
-        console.log(out);
-        temp[i]["categoryName"] = out;
-      }
-    };
-    test();
-    console.log(temp);
-  }
-
-  // console.log(temp);
+  const resp = await expenseModel.find({ userId }).populate("categoryId");
+  console.log(resp);
 
   if (resp.length === 0) {
     res.status(200).send({ message: "No record found" });
   }
 
-  res.status(200).send(temp);
+  res.status(200).send(resp);
 });
 const deleteExpense = asyncHandler(async (req, res) => {
   const { expenseId } = req.body;
