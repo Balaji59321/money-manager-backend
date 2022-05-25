@@ -4,6 +4,7 @@ const expenseModel = require("./../model/expenseModule");
 const categoryModel = require("./../model/categoryModule");
 const config = require("./../config");
 const bcrypt = require("bcryptjs");
+const moment = require("moment");
 
 const addExpense = asyncHandler(async (req, res) => {
   console.log(req.body);
@@ -29,6 +30,14 @@ const addExpense = asyncHandler(async (req, res) => {
 
 const updateExpense = asyncHandler(async (req, res) => {
   const data = req.body;
+
+  console.log("hello");
+  console.log(data["createdAt"]);
+
+  const dateCompare = moment().diff(
+    moment(data["createdAt"], "DD/MM/YYYY HH:mm:ss")
+  );
+  console.log(dateCompare);
 
   const resp = await expenseModel.findByIdAndUpdate(data._id, data);
   if (resp.length === 0) {
