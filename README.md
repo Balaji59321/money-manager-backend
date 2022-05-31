@@ -1,5 +1,7 @@
 # money-manager-backend
 
+Heroku endpoint : https://money-manager-backend-balaji.herokuapp.com
+
 POST - create an new expense
 {
     "title": "Milk",
